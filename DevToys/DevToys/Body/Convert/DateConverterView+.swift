@@ -24,7 +24,7 @@ final class DateConverterViewController: NSViewController {
         self.$date
             .sink{[unowned self] in
                 self.cell.datePicker.date = $0
-                self.cell.unixTimeField.value = $0.timeIntervalSince1970.rounded()
+                self.cell.unixTimeField.value = $0.timeIntervalSince1970.rounded(.towardZero)
                 self.cell.isoDateField.string = isoFormatter.string(from: $0)
                 self.cell.graphicDatePicker.dateValue = $0
             }
